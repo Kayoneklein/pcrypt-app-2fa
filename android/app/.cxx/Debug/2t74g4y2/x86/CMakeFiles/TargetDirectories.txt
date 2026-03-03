@@ -1,0 +1,2 @@
+/Users/user/Desktop/pcrypt-flutterapp/android/app/.cxx/Debug/2t74g4y2/x86/CMakeFiles/edit_cache.dir
+/Users/user/Desktop/pcrypt-flutterapp/android/app/.cxx/Debug/2t74g4y2/x86/CMakeFiles/rebuild_cache.dir
