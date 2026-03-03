@@ -1,0 +1,16 @@
+import 'dart:convert';
+
+import 'package:flutter_test/flutter_test.dart';
+import 'package:pcrypt/model/configuration.dart';
+
+void main() {
+  test('Configuration parsed and encoded', () {
+    const original =
+        '{"productname":"Password Crypt","apitoken":"TEST","datasizelimit":10485760,"avatarsizelimit":10485760,"disablecreateconfirmationemail":false,"disableexport":false,"enableemergencymail":true,"emergencymaildays":10,"enableextensionlog":false,"extensionlogall":false,"allowextension2fanegation":false,"2faclientcheck":false,"2faclientcheckdays":false,"disablefiles":false,"disablefooter":false,"disableforum":false,"disablegeolocations":false,"disableinfopage":false,"disablemanual":false,"disablemessages":false,"disablepasswords":false,"disableprivacypage":false,"disableteamadmins":false,"disableteamcreate":false,"disableemailshare":false,"disableteamshare":false,"disableusershare":false,"disableusershareemail":true,"disableteamshareemail":true,"disableteams":false,"disableusercreate":false,"disableconfigserver":false,"disableuserdefaultteams":false,"disableuserdelete":false,"disableusersetinfo":false,"disablewelcomemail":false,"enablelivechat":"https://www.tidio.com/talk/57r7mn55hpxnbucbmjusbfsxa7ejxfo1","enableupgrade":false,"forcehttps":false,"force2fa":false,"globalpremium":false,"loginneedconfirmation":false,"loginsecondstepdelete":false,"merchantnumber":null,"servicedeskinfo":false,"useremailinreply":false,"version":"1.15.0","iconrefresh":30,"iconsize":48,"iconmaxsize":200,"haveibeenpwnedapikey":"046a6ec9d95a4171b0afcd314cceda48","honeypotapikey":"gtarenajxvjb","honeypotthreatlevel":50,"ldapintegration":false,"LDAP_protocol":false,"LDAP_host":"","LDAP_user":"","LDAP_pass":"","LDAP_tree":"","LDAP_filter":"","LDAP_valuetoverify":"","LDAP_group":false,"LDAP_userisemail":false,"LDAP_staticdomain":"","LDAP_logincompleteemail":false,"LDAP_createloginrequired":false,"LDAP_namesync":false,"LDAP_departmentsync":false,"LDAP_avatarsync":false,"manualurl":{"default":"https://docs.google.com/document/d/e/2PACX-1vT6YuQOLagPzDrPmXzLnB7y2h1Yfrl8W6JN_-D4ZQNLy0MqSQ_06DwFe_7Rb6T1yGJ4542KwNy66oQ9/pub?embedded=true","en":"https://docs.google.com/document/d/e/2PACX-1vT6YuQOLagPzDrPmXzLnB7y2h1Yfrl8W6JN_-D4ZQNLy0MqSQ_06DwFe_7Rb6T1yGJ4542KwNy66oQ9/pub?embedded=true","da":"https://docs.google.com/document/d/e/2PACX-1vTe1szIWpZfGYRkVrkSWWRCbqOEDY-MSM117GFQiRugSyuULRHGVZibKZZn-VcyPEp-iwOOhG_1HqcW/pub?embedded=true"},"manualappurl":{"default":"https://docs.google.com/document/d/e/2PACX-1vTo8I5P-vkK3-2ohIkd23RYDK3bn6DMGk3NNqdVcM1m0TQ5ipN9TL1qwkGa45kHeD-WHa3U6F_UNWJN/pub?embedded=true","en":"https://docs.google.com/document/d/e/2PACX-1vTo8I5P-vkK3-2ohIkd23RYDK3bn6DMGk3NNqdVcM1m0TQ5ipN9TL1qwkGa45kHeD-WHa3U6F_UNWJN/pub?embedded=true","da":"https://docs.google.com/document/d/e/2PACX-1vQAnN06IHQzp6biagAF8wpRKMe0_9m4cJClUz8ee2ypCDF_LOcYCK4H8eA6IX1DGY43D4JQ9ScWjiTK/pub?embedded=true"},"manualmailurl":{"default":"https://pcrypt.com/manual","en":"https://pcrypt.com/manual","da":"https://pcrypt.com/da/manual"}}';
+    final decoded = RemoteConfiguration.fromJson(jsonDecode(original));
+    expect(decoded.twoFAClientCheckDays, -1);
+    expect(decoded.ldapGroup, '');
+    final encoded = jsonEncode(decoded.toJson());
+    expect(encoded, original);
+  });
+}
